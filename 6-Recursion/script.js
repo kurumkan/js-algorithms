@@ -42,3 +42,18 @@ function binRec(array, key, lowerBound, upperBound) {
 console.log('binary search');
 var arr = [1, 2, 3, 4, 5, 100, 150, 332];
 console.log(binRec(arr, 100, 0, arr.length - 1));
+console.log(binRec(arr, 5, 0, arr.length - 1));
+console.log(binRec(arr, 1000, 0, arr.length - 1));
+
+// hanoi towers
+function doTowers(topN, from, inter, to) {
+  if(topN === 1) {
+    console.log('Disk 1 from '+ from + ' to ' + to);
+  } else {
+    doTowers(topN - 1, from, to, inter);
+    console.log('Disk ' + topN + ' from ' + from + ' to ' + to);
+    doTowers(topN - 1, inter, from, to);
+  }
+}
+
+doTowers(3, 'A', 'B', 'C');
