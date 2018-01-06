@@ -5,10 +5,24 @@ function pNumber(n) {
   }
   return n + pNumber(n - 1);
 }
+
+// non-recursive alternative with stacks
+function pNumberSimple(n) {
+  var result = 0;
+  var stack = [];
+  while(n > 0) {
+    stack.push(n--);
+  }
+  while(stack.length) {
+   result += stack.pop();
+  }
+  return result;
+}
+
 console.log('pythagorean numbers');
-console.log(4, pNumber(4));
-console.log(4, pNumber(5));
-console.log(4, pNumber(6));
+console.log(4, pNumber(4), pNumberSimple(4));
+console.log(4, pNumber(5), pNumberSimple(5));
+console.log(4, pNumber(6), pNumberSimple(6));
 
 // get factorial of a number
 function fact(n) {
@@ -17,6 +31,9 @@ function fact(n) {
   }
   return n * fact(n - 1);
 }
+
+//
+
 console.log('factorials');
 console.log(4, fact(4));
 console.log(5, fact(5));
@@ -57,3 +74,13 @@ function doTowers(topN, from, inter, to) {
 }
 
 doTowers(3, 'A', 'B', 'C');
+
+// n power p
+function pow(n, p) {
+  if(p === 1) {
+    return n;
+  }
+  return n * pow(n, p - 1);
+}
+console.log('power', 5, 3, pow(5, 3));
+console.log('power', 2, 5, pow(2, 5));
