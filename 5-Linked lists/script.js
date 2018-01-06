@@ -8,6 +8,30 @@ var Link = function(id, data) {
   }
 };
 
+var Iterator = function (linkedList) {
+  var list = linkedList;
+  var next = null;
+  var current = null;
+
+  this.reset = function () {
+    next = null;
+    current = null;
+  };
+  this.next = function () {
+    if(!next) {
+      next = list.getFirst();
+      current = null;
+    } else {
+      current = next;
+      next = next.next;
+    }
+    return next;
+  };
+  this.hasNext = function () {
+    return !!next;
+  };
+};
+
 var LinkedList = function () {
   var first = null;
   var prev = null;
@@ -19,6 +43,9 @@ var LinkedList = function () {
   this.deleteFirst = function () {
     var temp = first;
     first = first.next;
+    return first;
+  };
+  this.getFirst = function () {
     return first;
   };
   this.find = function (id) {
@@ -48,6 +75,9 @@ var LinkedList = function () {
       }
     }
     return null;
+  };
+  this.getIterator = function () {
+    return new Iterator(this);
   };
   this.display = function () {
     console.log('LinkedList: ');
@@ -83,3 +113,12 @@ if(elementToDelete) {
   console.log('can\'t delete');
 }
 list.display();
+
+console.log('working with iterator');
+
+var myIterator = list.getIterator();
+
+while(myIterator.hasNext()) {
+  var current = myIterator.next();
+  current.display();
+}
