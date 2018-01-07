@@ -54,3 +54,42 @@ var array = [149, 192, 47, 152, 159, 195, 61, 66, 17, 167, 118, 64, 27, 80, 30, 
 var pos = partitionArray(array, 0, array.length - 1, 99);
 console.log('Partitioning position', pos);
 console.log('Result', array);
+
+// finds median of 3 elements of the array
+function getMedianOf3(arr, left, right) {
+  var center = Math.floor((left + right) / 2);
+  if(arr[left] > arr[center]) {
+    swap(arr, left, center);
+  }
+  if(arr[left] > arr[right]) {
+    swap(arr, left, right);
+  }
+  if(arr[center] > arr[right]) {
+    swap(arr, center, right);
+  }
+  return arr[right - 1];
+}
+
+function swap(arr, x, y) {
+  var temp = arr[x];
+  arr[x] = arr[y];
+  arr[y] = temp;
+}
+
+// quick sort
+// uses array partinioning
+function quickSort(arr, left, right) {
+  if(right <= left) {
+    return;
+  }
+  var pivot = getMedianOf3(arr, left, right);
+  var partition = partitionArray(arr, left, right, pivot);
+  quickSort(arr, left, partition - 1);
+  quickSort(arr, partition + 1, right);
+}
+
+console.log('quick sort');
+var array = [149, 192, 47, 152, 159, 195, 61, 66, 17, 167, 118, 64, 27, 80, 30, 105];
+console.log('before', array);
+quickSort(array, 0, array.length - 1);
+console.log('after', array);
