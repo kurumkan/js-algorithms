@@ -93,3 +93,16 @@ var array = [149, 192, 47, 152, 159, 195, 61, 66, 17, 167, 118, 64, 27, 80, 30, 
 console.log('before', array);
 quickSort(array, 0, array.length - 1);
 console.log('after', array);
+
+function genRandomArray(n = 100, ceil = 10) {
+  var res = [];
+  for(var i = 0; i < n; i++) {
+    res.push(Math.floor(Math.random() * ceil) + 1);
+  }
+  return res;
+}
+
+console.time('quick sort timing');
+quickSort(genRandomArray(10000, 100), 0, 9999);
+console.timeEnd('quick sort timing');
+
