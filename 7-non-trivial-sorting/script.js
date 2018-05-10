@@ -1,4 +1,5 @@
 // shellsort
+// O((logN) ^ 2)
 function shellSort(givenArr) {
   var arr = givenArr.slice();
   var h = 1; // step
@@ -9,7 +10,7 @@ function shellSort(givenArr) {
     for(var outer = h; outer < arr.length; outer++) {
       var temp = arr[outer];
       var inner = outer;
-      while(inner>h-1 && arr[inner - h] >= temp) {
+      while(inner > h-1 && arr[inner - h] >= temp) {
         arr[inner] = arr[inner - h];
         inner -= h;
       }
