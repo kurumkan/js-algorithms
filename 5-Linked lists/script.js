@@ -35,12 +35,12 @@ var Iterator = function (linkedList) {
 var LinkedList = function () {
   var first = null;
   var prev = null;
-  this.insertFirst = function(id, data) {
+  this.insert = function(id, data) {
     var newLink = new Link(id, data);
     newLink.next = first;
     first = newLink;
   };
-  this.deleteFirst = function () {
+  this.delete = function () {
     var temp = first;
     first = first.next;
     return first;
@@ -90,11 +90,11 @@ var LinkedList = function () {
 };
 
 var list = new LinkedList();
-list.insertFirst('1', 'first');
-list.insertFirst('2', 'second');
-list.insertFirst('3', 'third');
-list.insertFirst('4', 'fourth');
-list.insertFirst('5', 'fifth');
+list.insert('1', 'first');
+list.insert('2', 'second');
+list.insert('3', 'third');
+list.insert('4', 'fourth');
+list.insert('5', 'fifth');
 list.display();
 
 var element = list.find('3');
