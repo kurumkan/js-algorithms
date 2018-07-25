@@ -2,6 +2,7 @@
 // invarianta - elements after i are always sorted
 // O(N2)
 // STABLE
+// the largest element on the iteration bubbles up to the end of the array
 function bubbleSort(arr) {
   for(var i = arr.length - 1; i > 0; i--) {
     for(var j = 0; j < i; j++) {

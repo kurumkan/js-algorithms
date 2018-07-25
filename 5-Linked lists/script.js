@@ -8,8 +8,7 @@ var Link = function(id, data) {
   }
 };
 
-var Iterator = function (linkedList) {
-  var list = linkedList;
+var Iterator = function (list) {
   var next = null;
   var current = null;
 
@@ -34,13 +33,12 @@ var Iterator = function (linkedList) {
 
 var LinkedList = function () {
   var first = null;
-  var prev = null;
   this.insert = function(id, data) {
     var newLink = new Link(id, data);
     newLink.next = first;
     first = newLink;
   };
-  this.delete = function () {
+  this.deleteFirst = function () {
     var temp = first;
     first = first.next;
     return first;
